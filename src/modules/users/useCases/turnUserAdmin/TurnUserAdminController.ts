@@ -6,7 +6,9 @@ class TurnUserAdminController {
   constructor(private turnUserAdminUseCase: TurnUserAdminUseCase) {}
 
   handle(request: Request, response: Response): Response {
-    const { user_id } = request.query
+    let { user_id } = request.query
+
+    user_id = user_id.toString()
 
     this.turnUserAdminUseCase.execute({ user_id })
 

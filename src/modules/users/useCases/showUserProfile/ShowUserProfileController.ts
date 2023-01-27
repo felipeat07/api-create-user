@@ -6,7 +6,9 @@ class ShowUserProfileController {
   constructor(private showUserProfileUseCase: ShowUserProfileUseCase) {}
 
   handle(request: Request, response: Response): Response {
-    const { user_id } = request.query
+    let { user_id } = request.query
+
+    user_id = user_id.toString()
 
     this.showUserProfileUseCase.execute({ user_id })
 
